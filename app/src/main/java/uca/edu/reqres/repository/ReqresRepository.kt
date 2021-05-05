@@ -8,6 +8,7 @@ import uca.edu.reqres.retrofit.ReqresRetrofit
 import uca.edu.reqres.room.CacheMapper
 import uca.edu.reqres.room.ReqresDao
 import uca.edu.reqres.utils.DataState
+import java.net.UnknownHostException
 
 class ReqresRepository constructor(
     private val reqresDao: ReqresDao,
@@ -27,7 +28,17 @@ class ReqresRepository constructor(
             val cacheReqres = reqresDao.get()
             emit(DataState.Success(cacheMapper.mapFromEntityList(cacheReqres)))
         }catch (e: Exception){
-            emit(DataState.Error(e))
+            when (e){
+                is UnknownHostException ->{
+                    val cacheReqres = reqresDao.get()
+                    if (cacheReqres.isEmpty()){
+                        emit(DataState.Error(java.lang.Exception("La tabla Reqres se encuentra vacia, Conectece a internet ")))
+                    }else{
+                        emit(DataState.Success(cacheMapper.mapFromEntityList(cacheReqres)))
+                    }
+                }
+            }
+            //emit(DataState.Error(e))
         }
     }
 }
