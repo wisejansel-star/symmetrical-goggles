@@ -1,8 +1,16 @@
 # symmetrical-goggles
 Proyecto Consumo API (Patrón MVI, Kotlin) Asignatura: Móviles II
 
-Elaborado por: Jansel Enrique Altamirano Guido & Carlos Elías Acuña López
-
+Elaborado por: 
+<br>
+Jansel Enrique Altamirano Guido 
+<br>
+Carlos Elías Acuña López 
+<br>
+David Enrique Morales Cajina
+<br>
+Josue Daniel Lumbi González
+<br>
 
 API Consumida: https://reqres.in/
 
